@@ -133,4 +133,78 @@ div{
 .pointer{
     cursor: pointer;
 }
+.r-gray {
+  color: gray;
+  font-size: medium;
+}
+
+.r-no-bottom-margin {
+  margin-bottom: 0px;
+}
+
+.r-product-row {
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
+.r-checkbox-span {
+  padding-left: 30px;
+  padding-right: 30px;
+}
+
+.r-small-right-padding {
+  padding-right: 30px;
+}
+
+.r-small-right-left-margin {
+  padding-left: 10px;
+  padding-right: 10px;
+}
+
+.r-checkbox-margin-top {
+  margin-top: 40px;
+}
+
+.anchor-pointer {
+  cursor: pointer;
+}
+
+.rcorners {
+    border-radius: 25px;
+    border: 1px solid gray;
+    padding: 20px;  
+}
+
+.r-small-bottom-margin {
+  margin-bottom: 10px;
+}
+
+.r-small-top-margin {
+  margin-top: 20px;
+}
+
+.r-bottom-no-padding {
+  padding-bottom: 0px;
+}
+
+.r-bottom-no-margin {
+  margin-bottom: 0px;
+}
+
+.r-top-no-margin {
+  margin-top: 0px;
+}
+
+.r-small-text {
+  font-size: 12px;
+}
+
+.r-small-text {
+  font-size: 13px;
+}
+
+.r-small-left-padding {
+  padding-left: 10px;
+}
+
 

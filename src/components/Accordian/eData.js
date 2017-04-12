@@ -25,7 +25,7 @@ class Accordion extends React.Component {
     }
 
     eMenuOptionselect(qid,optvalue){
-               console.log(qid + " " +optvalue);
+               //console.log(qid + " " +optvalue);
                let insertIndex=-1;
                if(this.data.eMenusecOne.length > 0){
                   //let keys = Object.keys(this.data.eMenusecOne)          
@@ -45,7 +45,7 @@ class Accordion extends React.Component {
                if(insertIndex == -1){
                 this.data.eMenusecOne.push({"qid":qid,"optionselected":optvalue})
                }
-               console.log(this.data.eMenusecOne)
+               //console.log(this.data.eMenusecOne)
 
     }
 
@@ -58,32 +58,10 @@ class Accordion extends React.Component {
 
         return (
             <div className="row rootborder">
-            <section className="acc">
-                <span className="accHeader pointer" onClick={() => this.props.toggleACC()}>{this.props.header} <i className="caret pull-right"></i></span>
+            
+                            <section className="acc">           
 
-                <div className={`accBody ${accordionToggle}`}>
-                    <p>Required Provider Question</p>
-                    {
-                        this.state.questions.map((q, i) => {
-                            return <Question key={i + 'q'} data={q} qId={i + 'q'} />
-                        })
-                    }
-                    <div className="btn btn-primary pull-right">Save</div>
-                </div>
-
-            </section>
-
-
-
-
-
-                <section className="acc">    
                     <div>
-                     <p>Required Provider Question</p>
-                     <a><span >Edit</span></a>
-                    </div>        
-
-                    <div className={`accBody ${accordionToggle}`>
                         <p>Required Provider Question</p>
                         {
                             this.state.questions.map((q, i) => {
