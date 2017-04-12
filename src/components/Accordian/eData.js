@@ -17,7 +17,7 @@ class Accordion extends React.Component {
         super(props)
         this.state = {
             questions: Data.Questions,
-            saveEMenu:false
+            saveEMenu: true
         };
         this.data = {};
         this.data.eMenusecOne = [];
@@ -30,34 +30,32 @@ class Accordion extends React.Component {
     eMenuOptionselect(qid, optvalue) {
         //console.log(qid + " " +optvalue);
         let insertIndex = -1;
-        if (this.data.eMenusecOne.length > 0) {
+        if (this.state.questions.length > 0) {
             //let keys = Object.keys(this.data.eMenusecOne)          
 
-            this.data.eMenusecOne.forEach(function (item, i) {
-                if (item.qid == qid) {
-                    item.optionselected = optvalue;
-                    insertIndex = i
-                }
-                else {
-                    insertIndex = -1;
-                }
+            this.state.questions[qid.split('q')[0]]
+                .choices.forEach(function (item, i) {
+                    if (item.value == optvalue) {
+                        item.selected = true;
+                    }
+                    else {
+                        item.selected = false;
+                    }
 
-            })
+                })
 
-        }
-        if (insertIndex == -1) {
-            this.data.eMenusecOne.push({ "qid": qid, "optionselected": optvalue })
         }
         //console.log(this.data.eMenusecOne)
 
     }
 
-    eMenuOnsave(){
-        this.setState({saveEMenu : false});
+    eMenuOnsave() {
+        this.setState({ saveEMenu: false });
     }
 
     editEMenu() {
-        this.setState({saveEMenu : true});
+        this.setState({ "saveEMenu": true });
+        //this.setState({"questions":this.data.eMenusecOne})
     }
 
 
@@ -66,9 +64,9 @@ class Accordion extends React.Component {
 
         return (
             <div className="row rootborder">
-                {this.state.saveEMenu == false ? (<div className="col-xs-12" style={{padding:'15px'}}>
-                    <strong >Required Provider Question</strong><strong style={{float:'right',cursor:'pointer',textDecoration:'underline',color:'#3f3fb5'}} 
-                    onClick={this.editEMenu}>Edit</strong>
+                {this.state.saveEMenu == false ? (<div className="col-xs-12" style={{ padding: '15px' }}>
+                    <strong >Required Provider Question</strong><strong style={{ float: 'right', cursor: 'pointer', textDecoration: 'underline', color: '#3f3fb5' }}
+                        onClick={this.editEMenu}>Edit</strong>
                 </div>) :
                     (<section className="acc">
                         <div>
