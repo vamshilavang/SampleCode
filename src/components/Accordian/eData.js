@@ -1,7 +1,9 @@
 import React from 'react';
+import _ from 'underscore';
+
 import Question from '../common/question.js';
 import Data from '../../mockAPI/data.js';
-
+import HttpHelper from '../../Helper/httpHelper';
 
 const styles = {
     active: {
@@ -25,6 +27,15 @@ class Accordion extends React.Component {
         this.eMenuOptionselect = this.eMenuOptionselect.bind(this);
         this.editEMenu = this.editEMenu.bind(this);
         this.eMenuOnsave = this.eMenuOnsave.bind(this);
+    }
+
+    componentDidMount(){
+        this.state.dealerInfo = require('../../mockAPI/dealerProducts.json');
+        console.log(this.state.dealerInfo);
+        this.data.responseTomap = require('../../mockAPI/SendRequestToBE.json');
+        console.log(this.data.responseTomap);
+       let mapppedval = _.omit(this.data.responseTomap,'Vehicle');
+       console.log(mapppedval);
     }
 
     eMenuOptionselect(qid, optvalue) {
@@ -52,6 +63,7 @@ class Accordion extends React.Component {
 
     eMenuOnsave() {
         this.setState({ saveEMenu: false });
+        //let data = HttpHelper('https://jsonplaceholder.typicode.com/posts/1','get')
     }
 
     editEMenu() {
