@@ -1,4 +1,4 @@
-//http://192.168.17.32:6100/api/dealer-products
+//http://10.117.18.27:6220/Rating/RatingRESTAPI/json/requiredfields_json
 {
    "GetRequiredFieldsResponse": {
       "_errors": "",
