@@ -19,7 +19,8 @@ class Accordion extends React.Component {
         super(props)
         this.state = {
             questions: Data.Questions,
-            saveEMenu: true
+            saveEMenu: true,
+            products:[]
         };
         this.data = {};
         this.data.eMenusecOne = [];
@@ -28,6 +29,7 @@ class Accordion extends React.Component {
         this.editEMenu = this.editEMenu.bind(this);
         this.eMenuOnsave = this.eMenuOnsave.bind(this);
         this.getMappedRequiredField = this.getMappedRequiredField.bind(this);
+        this.getRenderdataFields = this.getRenderdataFields.bind(this);
     }
 
     componentDidMount() {
@@ -41,10 +43,12 @@ class Accordion extends React.Component {
         console.log(this.state.responseTomap);
         //let mapppedval = _.omit(this.data.responseTomap,'Vehicle');
         this.state.responseTomap.Products = this.getMappedRequiredField();
-        
+
         this.state.reqFieldResponseUI = require('../../mockAPI/reqFieldResponseUI.json');
         //let requestData = HttpHelper('http://10.117.18.27:6220/Rating/RatingRESTAPI/json/requiredfields_json','post',this.state.responseTomap) /**uncomment it to fetch data from server for reqFieldResponseUI */
-    }
+        this.state.reqFieldResponseUI.GetRequiredFieldsResponse.Products.RequiredFieldResponseProduct = this.getRenderdataFields();
+        this.setState({"products": this.state.reqFieldResponseUI.GetRequiredFieldsResponse.Products.RequiredFieldResponseProduct}); 
+  }
 
 
     getMappedRequiredField() {
@@ -52,16 +56,39 @@ class Accordion extends React.Component {
         let mappedData = [];
         _.each(this.state.dealerProduct.results, function (item, i) {
             if (item['is_rateable']) {
-                _.each(responseTomap, function (childitem,idx) {
+                _.each(responseTomap, function (childitem, idx) {
                     if ((item['category_code'] == childitem['ProductTypeCode'])
-                    &&(item['provider_code']==childitem['ProviderId'])
-                    &&(item['dealer_id']==childitem['ProviderDealerId'])){
+                        && (item['provider_code'] == childitem['ProviderId'])
+                        && (item['dealer_id'] == childitem['ProviderDealerId'])) {
                         mappedData.push(childitem);
                     }
-               });
+                });
             }
         });
         return mappedData;
+    }
+
+    getRenderdataFields() {
+        let grpResponseObj = {};
+        let RequiredFieldResponseProduct = this.state.reqFieldResponseUI.GetRequiredFieldsResponse.Products.RequiredFieldResponseProduct;
+        _.each(RequiredFieldResponseProduct, function (item, idx) {
+            _.each(item.Fields.Field, function (childitem, index) {
+                if (Object.keys(grpResponseObj).indexOf(childitem.Category) == -1) {
+                    grpResponseObj[childitem.Category] = [];
+                }
+                if (childitem.Required == 'Y' && childitem.Category != 'Vehicle'
+                    && childitem.ControlType != 'NA') {
+                    if (childitem.FieldValues && childitem.FieldValues.FieldValue.length > 4) {
+                        grpResponseObj[childitem.Category].push(childitem)
+                    }
+                    else {
+                        grpResponseObj[childitem.Category].push(childitem)
+                    }
+                }
+            });
+            RequiredFieldResponseProduct[idx]['GroupedCategory']=grpResponseObj;
+        })
+     return RequiredFieldResponseProduct
     }
 
     eMenuOptionselect(qid, optvalue) {
