@@ -15,3 +15,12 @@ Getting response to be mapped with dealer-product response
     ProductTypeCode" -  category_code
       "ProviderId" - provider_code
       "dealer_id" :ProviderDealerId
+
+Getting response to render UI -
+    //http://10.117.18.27:6220/Rating/RatingRESTAPI/json/requiredfields_json
+    Checks -  
+           required = true *then only show
+           category = vechile *IGNORE the object
+           Control_type - dropdown | radio *if FieldValue.length > 4 use dropdown 
+           Caption = * use it as question
+           

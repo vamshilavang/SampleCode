@@ -7,7 +7,7 @@
     {
       "product_id": 310000036,
       "dealer_code": 1111132,
-      "dealer_id":000006,
+      "dealer_id": "000006",
       "is_balloon": true,
       "is_cash": true,
       "is_contract": true,

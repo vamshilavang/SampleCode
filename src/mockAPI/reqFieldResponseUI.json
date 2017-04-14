@@ -1,4 +1,3 @@
-//http://10.117.18.27:6220/Rating/RatingRESTAPI/json/requiredfields_json
 {
     "GetRequiredFieldsResponse": {
         "_errors": "",
