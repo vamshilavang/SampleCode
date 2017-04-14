@@ -7,6 +7,7 @@
     {
       "product_id": 310000036,
       "dealer_code": 1111132,
+      "dealer_id":000006,
       "is_balloon": true,
       "is_cash": true,
       "is_contract": true,
@@ -27,6 +28,7 @@
       "min_price": "280",
       "category_id": 23,
       "category_code": "KYC",
+      "provider_code":"APC",
       "provider_id": 113430079,
       "long_description": "Product long description Rename",
       "name": "APC_Key Replacement Rename",

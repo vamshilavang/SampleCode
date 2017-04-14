@@ -12,3 +12,6 @@ Getting dealer product --
 
 Getting response to be mapped with dealer-product response
     //http://10.117.18.27:6220/Rating/RatingRESTAPI/json/requiredfields_json   
+    ProductTypeCode" -  category_code
+      "ProviderId" - provider_code
+      "dealer_id" :ProviderDealerId

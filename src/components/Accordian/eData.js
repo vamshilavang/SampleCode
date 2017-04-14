@@ -30,12 +30,18 @@ class Accordion extends React.Component {
     }
 
     componentDidMount(){
+        //this.state.dealerInfo = HttpHelper('url',methodtype)
         this.state.dealerInfo = require('../../mockAPI/dealerProducts.json');
         console.log(this.state.dealerInfo);
         this.data.responseTomap = require('../../mockAPI/SendRequestToBE.json');
         console.log(this.data.responseTomap);
-       let mapppedval = _.omit(this.data.responseTomap,'Vehicle');
+       //let mapppedval = _.omit(this.data.responseTomap,'Vehicle');
        console.log(mapppedval);
+    }
+
+
+    getMappedRequiredField(){
+        
     }
 
     eMenuOptionselect(qid, optvalue) {
