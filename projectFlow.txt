@@ -1,0 +1,21 @@
+Without Redux -
+Root Component - 
+   Emenu 
+      - Required Provider Component
+        - radiobutton components
+      - Term and Rate option Components
+        - Grid View components
+          - checkbox
+          - Text box
+          - label
+      - Product View    
+        - Image
+        - Dropdown
+        - checkbox
+        - Expanded Product view Components 
+          - Dropdown
+          - Checkbox
+        - Package component
+          -label  
+          -radio button
+          -textbox

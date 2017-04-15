@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import GridView from './gridView';
 import Product from './productView';
-import Emenu from './components/eMenu'
+import Emenu from './components/eMenu/eMenu'
 
 class App extends Component {
   constructor() {
