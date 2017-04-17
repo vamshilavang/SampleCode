@@ -1,18 +1,17 @@
 import React from 'react';
 import _ from 'underscore';
 
-import Choice from '../../common/radioBtn'
+import Radio from '../../common/radioBtn'
 
 const Question = (props) => {
     console.log("choices");
     return (
         <div >
             <div>{props.data.Caption}</div>
-            <div>{props.data.Category}</div>
             <div className="control-group">
                 {
                     _.map(props.data.FieldValues.FieldValue,function(c, i) {
-                        return <Choice key={i} data={c} qId={props.qId} events={props.events} />
+                        return <Radio key={props.clientproductId+"-"+i} data={c} categoryName={props.categoryName} clientProductId={props.clientproductId} selected={props.data.Value==c.Code?true:false} qId={props.qId} events={props.events} />
                     })
                 }
             </div>

@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import _ from 'underscore';
 
 import HttpHelper from '../../Helper/httpHelper';
-import RequireProvider from './reqProvider/eData';
+import RequireProvider from './reqProvider/requiredField';
 
 export default class eMenu extends Component {
   constructor(props) {
@@ -82,25 +82,41 @@ export default class eMenu extends Component {
     return RequiredFieldResponseProduct
   }
 
-  eMenuOptionselect(qid, optvalue) {
+  eMenuOptionselect(ClientProductId, qid, catname, optvalue) {
     //console.log(qid + " " +optvalue);
+    let questiondata = this.state.reqFieldResponseUI.GetRequiredFieldsResponse.Products.RequiredFieldResponseProduct;
     let insertIndex = -1;
-    if (this.state.questions.length > 0) {     
-      this.state.questions[qid.split('q')[0]]
-        .choices.forEach(function (item, i) {
-          if (item.value == optvalue) {
-            item.selected = true;
-          }
-          else {
-            item.selected = false;
-          }
-        })
+    if (questiondata.length > 0) {
+      _.map(questiondata, function (category, idx) {
+        if (category.ClientProductId + "-" + qid.split('-')[1] == qid) {
+          return (_.map(category.GroupedCategory, function (qs, i) {
+            if (i == catname) {
+              return _.map(qs, function (q, i) {
+                if (q.Required == 'Y' && (q.ControlType == 'RadioButton' || (q.FieldValues !== undefined && q.FieldValues.FieldValue.length > 4))) {
+                  return q.Value = optvalue.Code;
+                }
+              })
+            }
+          }))
+        }
+      })
+
+
+      // this.state.questions[qid.split('q')[0]]
+      //   .choices.forEach(function (item, i) {
+      //     if (item.value == optvalue) {
+      //       item.selected = true;
+      //     }
+      //     else {
+      //       item.selected = false;
+      //     }
+      //   })
     }
-    this.setState({ "questions": this.state.questions });
+    this.setState({ "reqFieldResponseUI": this.state.reqFieldResponseUI });
   }
 
   eMenuOnsave() {
-    this.setState({ saveEMenu: false });
+    this.setState({ "saveEMenu": false });
     //let data = HttpHelper('https://jsonplaceholder.typicode.com/posts/1','get')
   }
 
@@ -112,9 +128,9 @@ export default class eMenu extends Component {
   render() {
     return (
       <div>
-        {this.state.reqFieldResponseUI?
-        <RequireProvider header='eMenu' data={this.state.reqFieldResponseUI} events={this.events} />:
-        null}
+        {this.state.reqFieldResponseUI ?
+          <RequireProvider header='eMenu' IsEdit={this.state.saveEMenu} data={this.state.reqFieldResponseUI} events={this.events} /> :
+          null}
       </div>
     );
   }

@@ -1,9 +1,9 @@
 import React from 'react';
 
-const Radio = (props) => {
+const Checkbox = (props) => {
     return (
         <label className="choices radio-inline">
-            <input type="radio" className="radio" 
+            <input type="checbox" className="radio" 
             name={props.clientProductId+"-"+props.qId} checked={props.selected} 
             onChange={()=>props.events(props.clientProductId,props.clientProductId+"-"+props.qId,props.categoryName,props.data)} />
             <span>{props.data.Desc}</span>
@@ -11,4 +11,4 @@ const Radio = (props) => {
     )
 }
 
-export default Radio
+export default Checkbox

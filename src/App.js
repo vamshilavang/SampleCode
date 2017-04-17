@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-import GridView from './gridView';
-import Product from './productView';
+import GridView from './components/eMenu/termAndRateOption/GridView';
+import Product from './components/eMenu/productView/ProductView';
 import Emenu from './components/eMenu/eMenu'
 
 class App extends Component {
