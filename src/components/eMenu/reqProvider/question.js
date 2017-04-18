@@ -9,7 +9,7 @@ const Question = (props) => {
         <div>
             <div>{props.data.Caption}</div>
             <form>
-                <div className="radio">
+                <div className="radio" style={{marginBottom:'0px'}}>
                     <div className="control-group">
                         {
                             _.map(props.data.FieldValues.FieldValue, function (c, i) {
