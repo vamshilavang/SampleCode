@@ -21,7 +21,7 @@
                             {
                                 "ControlType": "Dropdown",
                                 "Comment": "",
-                                "Value": "None",
+                                "Value": "",
                                 "MaxLength": "",
                                 "FieldValues": {
                                     "FieldValue": [

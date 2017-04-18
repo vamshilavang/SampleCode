@@ -1,12 +1,10 @@
-//ProductView.js
-
 import React from 'react';
 import ExpandedProduct from './ExpandedProduct'
-
+ 
 class Product extends React.Component{
   constructor(props){
     super(props);
-
+ 
     this.state = {
       imageUrl: this.props.optType.imageUrl,
       title: this.props.optType.title,
@@ -26,21 +24,20 @@ class Product extends React.Component{
   render(){
     return(
       <div className="">
-      <div className="row">
-        <div className="col-xs-3">
-          <img src={this.state.imageUrl.toString()} alt="Smiley face" width="50%" />
+      <div className="row product">
+        <div className="col-md-3 col-sm-3 col-xs-12">
+          <img src={this.state.imageUrl.toString()} width="100%" />
         </div>
-        <div className="col-xs-4">
+        <div className="col-xs-4 col-sm-3">
           <p className="r-no-bottom-margin"><b>{this.state.title}</b></p>
           <p className="r-gray">{this.state.price}</p>
           <p className="r-no-bottom-margin r-gray r-medium-text">Provider</p>
           <select className="form-control">
             <option>Provider</option>
-          </select>          
-          <p className="r-small-bottom-margin r-small-top-margin"><a className="anchor-pointer" onClick={this.updateShowMore.bind(this)}>{this.state.showMore == false ? 'Show More' : 'Show Less'}</a></p>        
+          </select>         
+          <p className="r-small-bottom-margin r-small-top-margin"><a className="anchor-pointer" onClick={this.updateShowMore.bind(this)}>{this.state.showMore == false ? 'Show More' : 'Show Less'}</a></p>       
         </div>
-        <div className="col-xs-1"></div>
-        <div className="col-xs-4 r-checkbox-margin-top">
+        <div className="col-xs-4  col-sm-4 r-checkbox-margin-top product-option">
           <span className="r-checkbox-span"><input type="checkbox" key="platinum" value={this.state.platinum} /></span>
           <span className="r-checkbox-span"><input type="checkbox" key="gold" value={this.state.gold} /></span>
           <span className="r-checkbox-span"><input type="checkbox" key="silver" value={this.state.silver} /></span>
@@ -53,12 +50,12 @@ class Product extends React.Component{
           : null
       }
       <hr/>
-      
+     
     </div>
     )
   }
 }
-
-
-
+ 
+ 
+ 
 export default Product;

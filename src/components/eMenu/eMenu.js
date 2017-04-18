@@ -25,12 +25,12 @@ export default class eMenu extends Component {
 
   componentDidMount() {
     //console.log(HttpHelper("https://jsonplaceholder.typicode.com/posts/1",'get'))
-    //this.state.dealerInfo = HttpHelper('http://192.168.17.32:6100/api/dealer-products','get')/** Uncomment it and fetch the dealer product */
+    //this.state.dealerInfo = HttpHelper('http://192.168.17.32:6100/api/deal/v1/dealer-products','get')/** Uncomment it and fetch the dealer product */
     this.state.dealerProduct = require('../../mockAPI/dealerProducts.json');
     console.log(this.state.dealerProduct);
     // plz fetch SendRequestToBE
     this.state.responseTomap = require('../../mockAPI/SendRequestToBE.json');
-    //this.state.responseTomap = HttpHelper(api,'get');
+    //this.state.responseTomap = HttpHelper('http://10.117.18.27:6220/Rating/RatingRESTAPI/json/requiredfields_json','post');
     console.log(this.state.responseTomap);
     //let mapppedval = _.omit(this.data.responseTomap,'Vehicle');
     this.state.responseTomap.Products = this.getMappedRequiredField();

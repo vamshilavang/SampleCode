@@ -8,7 +8,10 @@ const HttpHelper = (url, method, reqData) => {
    //var reqData = {"dealer_code":123,"dealer_id":1234}
 
     if (method.toLowerCase() == 'post') {
-        axios[method](url, reqData)
+        var config = {
+  headers: {'dealer-code': '1112016'}
+};
+        axios.post(url,config)
             .then(function (response) {
                 console.log(response);
                 if (response.status == 200) {
@@ -22,7 +25,10 @@ const HttpHelper = (url, method, reqData) => {
             });
     }
     else {
-        axios[method](url)
+        var config = {
+  headers: {'Content-Type': 'application/json'}
+};
+        axios.get(url,config)
             .then(function (response) {
                 if (response.status == 200) {
                     console.log(response.data);

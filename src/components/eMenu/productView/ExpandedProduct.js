@@ -1,5 +1,5 @@
 import React from 'react';
-
+ 
 class ExpandedProduct extends React.Component{
   constructor(props){
     super(props);
@@ -14,19 +14,19 @@ class ExpandedProduct extends React.Component{
               <p className="r-gray r-bottom-no-margin r-small-text">Program</p>
               <select className="form-control">
                 <option>Program A</option>
-              </select> 
+              </select>
             </div>
             <div className="row r-small-bottom-margin">
               <p className="r-gray r-bottom-no-margin r-small-text">Program</p>
               <select className="form-control">
                 <option>48/48,000</option>
-              </select> 
+              </select>
             </div>
             <div className="row r-small-bottom-margin">
               <p className="r-gray r-bottom-no-margin r-small-text">Program</p>
               <select className="form-control">
                 <option>$250</option>
-              </select> 
+              </select>
             </div>
             <div className="row r-small-bottom-margin">
               <p className="r-gray r-small-text">Options</p>
@@ -35,6 +35,16 @@ class ExpandedProduct extends React.Component{
               <p><input type="checkbox" /><span className="r-small-left-padding">Option 3</span></p>
               <p><input type="checkbox" /><span className="r-small-left-padding">Option 4</span></p>
             </div>
+            <h6>Cost</h6>
+     <div className="input-group default-margin-tp-btm">
+      <span className="input-group-addon" id="sizing-addon2">$</span>
+      <input type="text" className="form-control"/>
+     </div>
+     <h6>Price</h6>
+     <div className="input-group default-margin-tp-btm">
+      <span className="input-group-addon" id="sizing-addon2">$</span>
+      <input type="text" className="form-control"/>
+     </div>
           </div>
         </div>
         <div className="col-xs-3 r-small-right-left-margin">
@@ -44,19 +54,19 @@ class ExpandedProduct extends React.Component{
               <p className="r-gray r-bottom-no-margin r-small-text">Program</p>
               <select className="form-control">
                 <option>Program A</option>
-              </select> 
+              </select>
             </div>
             <div className="row r-small-bottom-margin">
               <p className="r-gray r-bottom-no-margin r-small-text">Program</p>
               <select className="form-control">
                 <option>48/48,000</option>
-              </select> 
+              </select>
             </div>
             <div className="row r-small-bottom-margin">
               <p className="r-gray r-bottom-no-margin r-small-text">Program</p>
               <select className="form-control">
                 <option>$250</option>
-              </select> 
+              </select>
             </div>
             <div className="row r-small-bottom-margin">
               <p className="r-gray r-small-text">Options</p>
@@ -65,6 +75,16 @@ class ExpandedProduct extends React.Component{
               <p><input type="checkbox" /><span className="r-small-left-padding">Option 3</span></p>
               <p><input type="checkbox" /><span className="r-small-left-padding">Option 4</span></p>
             </div>
+            <h6>Cost</h6>
+     <div className="input-group default-margin-tp-btm">
+      <span className="input-group-addon" id="sizing-addon2">$</span>
+      <input type="text" className="form-control"/>
+     </div>
+     <h6>Price</h6>
+     <div className="input-group default-margin-tp-btm">
+      <span className="input-group-addon" id="sizing-addon2">$</span>
+      <input type="text" className="form-control"/>
+     </div>
           </div>
        </div>
         <div className="col-xs-3 r-small-right-left-margin">
@@ -74,19 +94,19 @@ class ExpandedProduct extends React.Component{
               <p className="r-gray r-bottom-no-margin r-small-text">Program</p>
               <select className="form-control">
                 <option>Program A</option>
-              </select> 
+              </select>
             </div>
             <div className="row r-small-bottom-margin">
               <p className="r-gray r-bottom-no-margin r-small-text">Program</p>
               <select className="form-control">
                 <option>48/48,000</option>
-              </select> 
+              </select>
             </div>
             <div className="row r-small-bottom-margin">
               <p className="r-gray r-bottom-no-margin r-small-text">Program</p>
               <select className="form-control">
                 <option>$250</option>
-              </select> 
+              </select>
             </div>
             <div className="row r-small-bottom-margin">
               <p className="r-gray r-small-text">Options</p>
@@ -95,6 +115,16 @@ class ExpandedProduct extends React.Component{
               <p><input type="checkbox" /><span className="r-small-left-padding">Option 3</span></p>
               <p><input type="checkbox" /><span className="r-small-left-padding">Option 4</span></p>
             </div>
+            <h6>Cost</h6>
+     <div className="input-group default-margin-tp-btm">
+      <span className="input-group-addon" id="sizing-addon2">$</span>
+      <input type="text" className="form-control"/>
+     </div>
+     <h6>Price</h6>
+     <div className="input-group default-margin-tp-btm">
+      <span className="input-group-addon" id="sizing-addon2">$</span>
+      <input type="text" className="form-control"/>
+     </div>
           </div>
         </div>
         <div className="col-xs-3 r-small-right-left-margin">
@@ -104,19 +134,19 @@ class ExpandedProduct extends React.Component{
               <p className="r-gray r-bottom-no-margin r-small-text">Program</p>
               <select className="form-control">
                 <option>Program A</option>
-              </select> 
+              </select>
             </div>
             <div className="row r-small-bottom-margin">
               <p className="r-gray r-bottom-no-margin r-small-text">Program</p>
               <select className="form-control">
                 <option>48/48,000</option>
-              </select> 
+              </select>
             </div>
             <div className="row r-small-bottom-margin">
               <p className="r-gray r-bottom-no-margin r-small-text">Program</p>
               <select className="form-control">
                 <option>$250</option>
-              </select> 
+              </select>
             </div>
             <div className="row r-small-bottom-margin">
               <p className="r-gray r-small-text">Options</p>
@@ -125,6 +155,16 @@ class ExpandedProduct extends React.Component{
               <p><input type="checkbox" /><span className="r-small-left-padding">Option 3</span></p>
               <p><input type="checkbox" /><span className="r-small-left-padding">Option 4</span></p>
             </div>
+            <h6>Cost</h6>
+     <div className="input-group default-margin-tp-btm">
+      <span className="input-group-addon" id="sizing-addon2">$</span>
+      <input type="text" className="form-control"/>
+     </div>
+     <h6>Price</h6>
+     <div className="input-group default-margin-tp-btm">
+      <span className="input-group-addon" id="sizing-addon2">$</span>
+      <input type="text" className="form-control"/>
+     </div>
           </div>
         </div>
         
@@ -132,5 +172,5 @@ class ExpandedProduct extends React.Component{
     );
   }
 }
-
+ 
 export default ExpandedProduct;
