@@ -1,0 +1,81 @@
+{
+      "KeyData": {
+            "ClientId": "DEM",
+            "ClientDealerId": "104334",
+            "DTDealerId": "104334",
+            "RequestDate": "\/Date(1472097614353)\/"
+      },
+      "Vehicle": {
+            "BookType": "1",
+            "Year": "0",
+            "PurchasePrice": "0",
+            "Odometer": "0",
+            "PurchaseDate": "\/Date(1472097614353)\/",
+            "Type": "1",
+            "InServiceDate": "\/Date(1472097614353)\/",
+            "VehicleAttributes": []
+      },
+      "Finance": {
+            "DealType": "1",
+            "MSRP": "0",
+            "FinancedAmount": "0",
+            "FinanceTerm": "0",
+            "FinanceTerm2": "0",
+            "FinanceApr": "0",
+            "MonthlyPayment": "0",
+            "FirstPaymentDate": "\/Date(1472097614353)\/",
+            "DaysToFirstPayment": "0",
+            "LeaseAnnualMileage": "0"
+      },
+      "Products": [
+            {
+                  "ProductTypeCode": "VSC",
+                  "ProviderId": "APC",
+                  "ProviderDealerId": "000006",
+                  "ClientProductId": "647644",
+                  "ProviderProductId": ""
+            },
+            {
+                  "ProductTypeCode": "AP",
+                  "ProviderId": "APC",
+                  "ProviderDealerId": "000006",
+                  "ClientProductId": "647644",
+                  "ProviderProductId": ""
+            },
+            {
+                  "ProductTypeCode": "PPM",
+                  "ProviderId": "APC",
+                  "ProviderDealerId": "000006",
+                  "ClientProductId": "647644",
+                  "ProviderProductId": ""
+            },
+            {
+                  "ProductTypeCode": "GAP",
+                  "ProviderId": "APC",
+                  "ProviderDealerId": "000006",
+                  "ClientProductId": "647644",
+                  "ProviderProductId": ""
+            },
+            {
+                  "ProductTypeCode": "RHTW",
+                  "ProviderId": "APC",
+                  "ProviderDealerId": "000006",
+                  "ClientProductId": "647644",
+                  "ProviderProductId": ""
+            },
+            {
+                  "ProductTypeCode": "KYC",
+                  "ProviderId": "APC",
+                  "ProviderDealerId": "000006",
+                  "ClientProductId": "647644",
+                  "ProviderProductId": ""
+            },
+            {
+                  "ProductTypeCode": "PDR",
+                  "ProviderId": "APC",
+                  "ProviderDealerId": "000006",
+                  "ClientProductId": "647644",
+                  "ProviderProductId": ""
+            }
+      ]
+}
