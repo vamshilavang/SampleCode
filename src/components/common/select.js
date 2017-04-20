@@ -2,13 +2,17 @@ import React from 'react';
 
 const Select = (props) => {
     return (
-        <div className="row r-small-bottom-margin">
-            <p className="r-gray r-bottom-no-margin r-small-text">Select</p>
-            <select className="form-control">
-                <option>$250</option>
+        <div className="r-small-bottom-margin">
+            <select className="form-control" value={props.data}
+            onChange={(event)=>props.events(props.clientProductId,props.clientProductId+"-"+props.qId,props.categoryName,event)} >
+                {
+                    props.data.FieldValues.FieldValue.map((c, i) => {
+                        return <option key={i} value={c.Code}>{c.Desc}</option>
+                    })
+                }
             </select>
         </div>
     )
 }
 
-export default Choices
+export default Select

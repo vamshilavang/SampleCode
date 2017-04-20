@@ -2,6 +2,7 @@ import React from 'react';
 import _ from 'underscore';
 
 import Question from './question';
+import Select from '../../common/select'
 
 const styles = {
     active: {
@@ -42,17 +43,14 @@ const RequireProvider = (props) => {
                                             } else {
                                                 showCaption = false;
                                             }
-                                            return (showCaption == true && q.Required == 'Y' && (q.ControlType == 'RadioButton' || (q.FieldValues !== undefined && q.FieldValues.FieldValue.length > 4)) ?
-                                                (<Question key={category.ClientProductId.toString() + i + 'q'} categoryName={catname} clientproductId={category.ClientProductId} data={q} qId={i + 'q'} events={props.events.eMenuOptionselect} />) : null)
+                                            return (showCaption == true && q.Required == 'Y' && (q.ControlType != 'NA' && q.ControlType != 'Calendar' || (q.FieldValues !== undefined )) ?
+                                                (<Question key={category.ClientProductId.toString() + i + 'q'} categoryName={catname} clientproductId={category.ClientProductId} data={q} qId={i + 'q'} events={props.events} />) : null)
                                         })
-
                                     }))
-
                                 })
                             }
                             {/* <div className="btn btn-primary pull-right" onClick={props.events.eMenuOnsave}>Save</div>*/}
                         </div>
-
                     </section>)}
             </div>
         </div>

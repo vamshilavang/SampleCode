@@ -19,6 +19,8 @@ export default class eMenu extends Component {
     this.events.eMenuOptionselect = this.eMenuOptionselect.bind(this);
     this.events.editEMenu = this.editEMenu.bind(this);
     this.events.eMenuOnsave = this.eMenuOnsave.bind(this);
+    this.events.eMenuSelect = this.eMenuSelect.bind(this);
+    //this.events.handleChange = this.handleChange.bind(this);
     this.getMappedRequiredField = this.getMappedRequiredField.bind(this);
     this.getRenderdataFields = this.getRenderdataFields.bind(this);
   }
@@ -92,8 +94,10 @@ export default class eMenu extends Component {
           return (_.map(category.GroupedCategory, function (qs, i) {
             if (i == catname) {
               return _.map(qs, function (q, i) {
-                if (q.Required == 'Y' && (q.ControlType == 'RadioButton' || (q.FieldValues !== undefined && q.FieldValues.FieldValue.length > 4))) {
+                if (q.Required == 'Y' && (q.ControlType != 'NA' && q.ControlType != 'Calendar' && (q.FieldValues !== undefined && q.FieldValues.FieldValue.length < 4))) {
                   return q.Value = optvalue.Code;
+                } else if (q.Required == 'Y' && (q.ControlType != 'NA' && q.ControlType != 'Calendar' && (q.FieldValues !== undefined && q.FieldValues.FieldValue.length > 4))) {
+                  return q.Value = optvalue.event.target.value;
                 }
               })
             }
@@ -113,6 +117,10 @@ export default class eMenu extends Component {
       //   })
     }
     this.setState({ "reqFieldResponseUI": this.state.reqFieldResponseUI });
+  }
+
+  eMenuSelect(ClientProductId, qid, catname, optvalue) {
+    console.log("called");
   }
 
   eMenuOnsave() {
