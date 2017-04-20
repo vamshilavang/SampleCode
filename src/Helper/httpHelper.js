@@ -3,16 +3,55 @@
 import axios from 'axios';
 
 
-const HttpHelper = (url, method, reqData) => {
+const HttpHelper = (url, method, reqData,callback) => {
 
-   //var reqData = {"dealer_code":123,"dealer_id":1234}
+   var reqData = {
+   "KeyData": {
+      "ClientId": "DEM",
+      "ClientDealerId": "1112016",
+      "DTDealerId": "1112016",
+      "RequestDate": "\/Date(1472097614353)\/"
+   },
+   "Vehicle": {
+      "BookType": "1",
+      "Year": "0",
+      "PurchasePrice": "0",
+      "Odometer": "0",
+      "PurchaseDate": "\/Date(1472097614353)\/",
+      "Type": "1",
+      "InServiceDate": "\/Date(1472097614353)\/",
+      "VehicleAttributes": []
+   },
+   "Finance": {
+      "DealType": "1",
+      "MSRP": "0",
+      "FinancedAmount": "0",
+      "FinanceTerm": "0",
+      "FinanceTerm2": "0",
+      "FinanceApr": "0",
+      "MonthlyPayment": "0",
+      "FirstPaymentDate": "\/Date(1472097614353)\/",
+      "DaysToFirstPayment": "0",
+      "LeaseAnnualMileage": "0"
+   },
+   "Products": [
+      {
+         "ProductTypeCode": "VSC",
+         "ProviderId": "APC",
+         "ProviderDealerId": "000006",
+         "ClientProductId": "647644",
+         "ProviderProductId": ""
+      }
+   ]
+}
+
 
     if (method.toLowerCase() == 'post') {
         if(reqData == undefined){
             reqData={};
         }
         var config = {
-  headers: {'Content-Type': 'application/json;charset=utf-8','Dealer-Code': '1112016'}
+  headers: {'Content-Type': 'application/json'}
 };
         axios.post(url,reqData,config)
             .then(function (response) {
