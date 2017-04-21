@@ -26,7 +26,7 @@
       "max_price": null,
       "min_price": null,
       "category_id": 1,
-      "category_code": null,
+      "category_code": "AP",
       "provider_id": 113430079,
       "provider_code": "APC",
       "provider_name": "EasyCare",

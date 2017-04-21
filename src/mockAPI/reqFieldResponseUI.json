@@ -3,14 +3,14 @@
   "Errors": [],
   "Products": [
     {
-      "ClientProductId": null,
+      "ClientProductId": 1234455,
       "Errors": [],
       "Fields": [
         {
-          "Caption": "",
+          "Caption": "Check",
           "Category": "Financing",
           "Comment": "",
-          "ControlType": "NA",
+          "ControlType": "Dropdown",
           "DataType": "Alphanumeric",
           "FieldValues": [
             {
@@ -28,6 +28,10 @@
             {
               "Code": "Cash",
               "Desc": "Cash"
+            },
+            {
+              "Code": "Cashlo",
+              "Desc": "Cashlo"
             }
           ],
           "MaxLength": "",
@@ -35,7 +39,7 @@
           "MinValue": "",
           "Name": "deal_type",
           "Required": "Y",
-          "Value": null
+          "Value": ""
         },
         {
           "Caption": "",
@@ -81,7 +85,7 @@
         },
         {
           "Caption": "Usage",
-          "Category": "Vehicle",
+          "Category": "Financing",
           "Comment": "",
           "ControlType": "Dropdown",
           "DataType": "Alphanumeric",
