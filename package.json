@@ -8,10 +8,12 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "axios": "^0.16.1",
     "css-loader": "^0.28.0",
     "react": "^15.5.3",
     "react-dom": "^15.5.3",
-    "style-loader": "^0.16.1"
+    "style-loader": "^0.16.1",
+    "underscore": "^1.8.3"
   },
   "devDependencies": {
     "babel-core": "^6.24.1",
@@ -21,14 +23,11 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/vamshilavang/eMenu.git"
+    "url": "https://github.dev.dealertrack.com/DT2-Payment-NYIlluminati/dt-menu-app.git"
   },
   "keywords": [
     "eMenu"
   ],
-  "bugs": {
-    "url": "https://github.com/vamshilavang/eMenu/issues"
-  },
-  "homepage": "https://github.com/vamshilavang/eMenu#readme",
-  "description": ""
+  "author": "illuminati",
+  "license": "ISC"
 }
