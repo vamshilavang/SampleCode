@@ -135,7 +135,7 @@ dataTosend['Vehicle'] =  {
     return RequiredFieldResponseProduct
   }
 
-  eMenuOptionselect(ClientProductId, qid, catname, optvalue) {
+  eMenuOptionselect(ClientProductId, qid, catname, optvalue,caption) {
     //console.log(qid + " " +optvalue);
     let questiondata = this.state.reqFieldResponseUI.Products;
     let insertIndex = -1;
@@ -145,9 +145,9 @@ dataTosend['Vehicle'] =  {
           return (_.map(category.GroupedCategory, function (qs, i) {
             if (i == catname) {
               return _.map(qs, function (q, i) {
-                if (q.Required == 'Y' && (q.ControlType != 'NA' && q.ControlType != 'Calendar' && (q.FieldValues !== undefined && q.FieldValues.length <= 4))) {
+                if (q.Required == 'Y' && q.Caption==caption && (q.ControlType != 'NA' && q.ControlType != 'Calendar' && (q.FieldValues !== undefined && q.FieldValues.length <= 4))) {
                   return q.Value = optvalue.Code;
-                } else if (q.Required == 'Y' && (q.ControlType != 'NA' && q.ControlType != 'Calendar' && (q.FieldValues !== undefined && q.FieldValues.length > 4))) {
+                } else if (q.Required == 'Y'  && q.Caption==caption && (q.ControlType != 'NA' && q.ControlType != 'Calendar' && (q.FieldValues !== undefined && q.FieldValues.length > 4))) {
                   return q.Value = optvalue.target==undefined?optvalue.Code:optvalue.target.value;
                 }
               })
