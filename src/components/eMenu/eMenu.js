@@ -28,7 +28,7 @@ export default class eMenu extends Component {
 
   componentDidMount() {
     //console.log(HttpHelper("https://jsonplaceholder.typicode.com/posts/1",'get'))
-    //this.state.dealerInfo = HttpHelper('http://192.168.17.32:6100/api/deal/v1/dealer-products/','get')/** Uncomment it and fetch the dealer product */
+    //this.state.dealerProduct = HttpHelper('http://192.168.17.32:6100/api/deal/v1/dealer-products/','get')/** Uncomment it and fetch the dealer product */
     this.state.dealerProduct = require('../../mockAPI/dealerProducts.json');
     console.log(this.state.dealerProduct);
     this.state.responseTosend = this.createReqFieldResponse();
@@ -146,10 +146,10 @@ dataTosend['Vehicle'] =  {
           return (_.map(category.GroupedCategory, function (qs, i) {
             if (i == catname) {
               return _.map(qs, function (q, i) {
-                if (q.Required == 'Y' && (q.ControlType != 'NA' && q.ControlType != 'Calendar' && (q.FieldValues !== undefined && q.FieldValues.FieldValue.length < 4))) {
+                if (q.Required == 'Y' && (q.ControlType != 'NA' && q.ControlType != 'Calendar' && (q.FieldValues !== undefined && q.FieldValues.FieldValue.length <= 4))) {
                   return q.Value = optvalue.Code;
                 } else if (q.Required == 'Y' && (q.ControlType != 'NA' && q.ControlType != 'Calendar' && (q.FieldValues !== undefined && q.FieldValues.FieldValue.length > 4))) {
-                  return q.Value = optvalue.event.target.value;
+                  return q.Value = optvalue.target.value;
                 }
               })
             }
