@@ -14,7 +14,7 @@ const styles = {
 };
 
 const RequireProvider = (props) => {
-    const questiondata = props.data.GetRequiredFieldsResponse.Products.RequiredFieldResponseProduct;
+    const questiondata = props.data.Products;
     let checkprovideridList = [];
     let checkExistinCaption = [];
     let showCaption = false;

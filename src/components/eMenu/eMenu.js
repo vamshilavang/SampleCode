@@ -41,8 +41,8 @@ export default class eMenu extends Component {
 
     this.state.reqFieldResponseUI = require('../../mockAPI/reqFieldResponseUI.json');
     //let requestData = HttpHelper('http://10.117.18.27:6220/Rating/RatingRESTAPI/json/requiredfields_json','post',this.state.responseTomap) /**uncomment it to fetch data from server for reqFieldResponseUI */
-    this.state.reqFieldResponseUI.GetRequiredFieldsResponse.Products.RequiredFieldResponseProduct = this.getRenderdataFields();
-    this.setState({ "products": this.state.reqFieldResponseUI.GetRequiredFieldsResponse.Products.RequiredFieldResponseProduct });
+    this.state.reqFieldResponseUI.Products = this.getRenderdataFields();
+    this.setState({ "products": this.state.reqFieldResponseUI.Products });
   }
 
   createReqFieldResponse(){
@@ -102,8 +102,7 @@ dataTosend['Vehicle'] =  {
       if (item['is_rateable']) {
         _.each(responseTomap, function (childitem, idx) {
           if ((item['category_code'] == childitem['ProductTypeCode'])
-            && (item['provider_code'] == childitem['ProviderId'])
-            && (item['dealer_id'] == childitem['ProviderDealerId'])) {
+            && (item['provider_code'] == childitem['ProviderId'])) {
             mappedData.push(childitem);
           }
         });
@@ -114,15 +113,15 @@ dataTosend['Vehicle'] =  {
 
   getRenderdataFields() {
     let grpResponseObj = {};
-    let RequiredFieldResponseProduct = this.state.reqFieldResponseUI.GetRequiredFieldsResponse.Products.RequiredFieldResponseProduct;
+    let RequiredFieldResponseProduct = this.state.reqFieldResponseUI.Products;
     _.each(RequiredFieldResponseProduct, function (item, idx) {
-      _.each(item.Fields.Field, function (childitem, index) {
+      _.each(item.Fields, function (childitem, index) {
         if (Object.keys(grpResponseObj).indexOf(childitem.Category) == -1) {
           grpResponseObj[childitem.Category] = [];
         }
         if (childitem.Required == 'Y' && childitem.Category != 'Vehicle'
           && childitem.ControlType != 'NA') {
-          if (childitem.FieldValues && childitem.FieldValues.FieldValue.length > 4) {
+          if (childitem.FieldValues && childitem.FieldValues.length > 4) {
             grpResponseObj[childitem.Category].push(childitem)
           }
           else {
@@ -138,7 +137,7 @@ dataTosend['Vehicle'] =  {
 
   eMenuOptionselect(ClientProductId, qid, catname, optvalue) {
     //console.log(qid + " " +optvalue);
-    let questiondata = this.state.reqFieldResponseUI.GetRequiredFieldsResponse.Products.RequiredFieldResponseProduct;
+    let questiondata = this.state.reqFieldResponseUI.Products;
     let insertIndex = -1;
     if (questiondata.length > 0) {
       _.map(questiondata, function (category, idx) {
@@ -146,10 +145,10 @@ dataTosend['Vehicle'] =  {
           return (_.map(category.GroupedCategory, function (qs, i) {
             if (i == catname) {
               return _.map(qs, function (q, i) {
-                if (q.Required == 'Y' && (q.ControlType != 'NA' && q.ControlType != 'Calendar' && (q.FieldValues !== undefined && q.FieldValues.FieldValue.length <= 4))) {
+                if (q.Required == 'Y' && (q.ControlType != 'NA' && q.ControlType != 'Calendar' && (q.FieldValues !== undefined && q.FieldValues.length <= 4))) {
                   return q.Value = optvalue.Code;
-                } else if (q.Required == 'Y' && (q.ControlType != 'NA' && q.ControlType != 'Calendar' && (q.FieldValues !== undefined && q.FieldValues.FieldValue.length > 4))) {
-                  return q.Value = optvalue.target.value;
+                } else if (q.Required == 'Y' && (q.ControlType != 'NA' && q.ControlType != 'Calendar' && (q.FieldValues !== undefined && q.FieldValues.length > 4))) {
+                  return q.Value = optvalue.target==undefined?optvalue.Code:optvalue.target.value;
                 }
               })
             }

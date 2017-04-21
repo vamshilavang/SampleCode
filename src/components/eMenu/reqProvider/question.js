@@ -12,8 +12,8 @@ const Question = (props) => {
             <form>
                 <div className="radio" style={{marginTop:'0px'}}>
                     <div className="control-group" style={{ padding: '0px' }}>
-                        {props.data.FieldValues != undefined && props.data.FieldValues.FieldValue.length <= 4 ?
-                            _.map(props.data.FieldValues.FieldValue, function (c, i) {
+                        {props.data.FieldValues != undefined && props.data.FieldValues.length <= 4 ?
+                            _.map(props.data.FieldValues, function (c, i) {
                                 return <Radio key={props.clientproductId + "-" + i} data={c} categoryName={props.categoryName} clientProductId={props.clientproductId} selected={props.data.Value == c.Code ? true : false} qId={props.qId} events={props.events.eMenuOptionselect} />
                             }) : <Select data={props.data} categoryName={props.categoryName} clientProductId={props.clientproductId} qId={props.qId} events={props.events.eMenuOptionselect} />
                         }

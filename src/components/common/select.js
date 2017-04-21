@@ -6,7 +6,7 @@ const Select = (props) => {
             <select className="form-control" style={{width:'auto'}}  value={props.data.Value}
             onChange={(event)=>props.events(props.clientProductId,props.clientProductId+"-"+props.qId,props.categoryName,event)} >
                 {
-                    props.data.FieldValues.FieldValue.map((c, i) => {
+                    props.data.FieldValues.map((c, i) => {
                         return <option key={i} value={c.Code}>{c.Desc}</option>
                     })
                 }
