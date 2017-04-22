@@ -28,32 +28,39 @@ export default class eMenu extends Component {
 
   componentDidMount() {
     //console.log(HttpHelper("https://jsonplaceholder.typicode.com/posts/1",'get'))
-    //this.state.dealerProduct = HttpHelper('http://192.168.17.32:6100/api/deal/v1/dealer-products/','get')/** Uncomment it and fetch the dealer product */
-    this.state.dealerProduct = require('../../mockAPI/dealerProducts.json');
-    console.log(this.state.dealerProduct);
-    this.state.responseTosend = this.createReqFieldResponse();
+    HttpHelper('https://jsonplaceholder.typicode.com/posts', 'get').then(function (data) {
+      this.state.dealerProduct = data;
+      this.state.responseTosend = this.createReqFieldResponse();
+    }.bind(this));/** Uncomment it and fetch the dealer product */
+    //this.state.dealerProduct = require('../../mockAPI/dealerProducts.json');
+    
     // plz fetch SendRequestToBE
-   this.state.responseTomap = require('../../mockAPI/SendRequestToBE.json');
-    //this.state.responseTomap = HttpHelper('http://10.117.18.27:6220/Rating/RatingRESTAPI/json/requiredfields_json','post',this.state.responseTosend);
-    console.log(this.state.responseTomap);
+    //this.state.responseTomap = require('../../mockAPI/SendRequestToBE.json');
+    HttpHelper('http://10.117.18.27:6220/Rating/RatingRESTAPI/json/requiredfields_json', 'post', this.state.responseTosend).then(function (data) {
+      this.state.responseTomap = data;
+      this.state.responseTomap.Products = this.getMappedRequiredField();
+    }.bind(this));
     //let mapppedval = _.omit(this.data.responseTomap,'Vehicle');
-    this.state.responseTomap.Products = this.getMappedRequiredField();
+    
 
-    this.state.reqFieldResponseUI = require('../../mockAPI/reqFieldResponseUI.json');
-    //let requestData = HttpHelper('http://10.117.18.27:6220/Rating/RatingRESTAPI/json/requiredfields_json','post',this.state.responseTomap) /**uncomment it to fetch data from server for reqFieldResponseUI */
-    this.state.reqFieldResponseUI.Products = this.getRenderdataFields();
-    this.setState({ "products": this.state.reqFieldResponseUI.Products });
+    //this.state.reqFieldResponseUI = require('../../mockAPI/reqFieldResponseUI.json');
+    HttpHelper('http://10.117.18.27:6220/Rating/RatingRESTAPI/json/requiredfields_json', 'post', this.state.responseTomap).then(function (data) {
+      this.state.reqFieldResponseUI.Products = data;
+      this.state.reqFieldResponseUI.Products = this.getRenderdataFields();
+      this.setState({ "products": this.state.reqFieldResponseUI.Products });
+    }.bind(this)) /**uncomment it to fetch data from server for reqFieldResponseUI */
+
   }
 
-  createReqFieldResponse(){
+  createReqFieldResponse() {
     let dataTosend = {};
-    dataTosend['KeyData'] =  {
+    dataTosend['KeyData'] = {
       "ClientId": "DEM",
       "ClientDealerId": "1112016",
       "DTDealerId": "1112016",
       "RequestDate": "\/Date(1472097614353)\/"
-   };
-dataTosend['Vehicle'] =  {
+    };
+    dataTosend['Vehicle'] = {
       "BookType": "1",
       "Year": "0",
       "PurchasePrice": "0",
@@ -62,9 +69,9 @@ dataTosend['Vehicle'] =  {
       "Type": "1",
       "InServiceDate": "\/Date(1472097614353)\/",
       "VehicleAttributes": []
-   };
+    };
 
-      dataTosend['Finance'] =  {
+    dataTosend['Finance'] = {
       "DealType": "1",
       "MSRP": "0",
       "FinancedAmount": "0",
@@ -75,20 +82,22 @@ dataTosend['Vehicle'] =  {
       "FirstPaymentDate": "\/Date(1472097614353)\/",
       "DaysToFirstPayment": "0",
       "LeaseAnnualMileage": "0"
-   }
-     
-    
+    }
+
+
     debugger;
-    let productArray =[];
-    let productObject ={};
+    let productArray = [];
+    let productObject = {};
     let returnResponse;
-    _.each(this.state.dealerProduct.results,function(item,index){
-                 productObject = {"ProductTypeCode":item.category_code,
-                  "ProviderId": item.provider_code,
-                  "ProviderDealerId": item.dealer_id,
-                  "ClientProductId": "647644",
-                  "ProviderProductId": ""}
-                  productArray.push(productObject);
+    _.each(this.state.dealerProduct.results, function (item, index) {
+      productObject = {
+        "ProductTypeCode": item.category_code,
+        "ProviderId": item.provider_code,
+        "ProviderDealerId": item.dealer_id,
+        "ClientProductId": "647644",
+        "ProviderProductId": ""
+      }
+      productArray.push(productObject);
     })
     dataTosend['Products'] = productArray;
 
@@ -135,7 +144,7 @@ dataTosend['Vehicle'] =  {
     return RequiredFieldResponseProduct
   }
 
-  eMenuOptionselect(ClientProductId, qid, catname, optvalue,caption) {
+  eMenuOptionselect(ClientProductId, qid, catname, optvalue, caption) {
     //console.log(qid + " " +optvalue);
     let questiondata = this.state.reqFieldResponseUI.Products;
     let insertIndex = -1;
@@ -145,10 +154,10 @@ dataTosend['Vehicle'] =  {
           return (_.map(category.GroupedCategory, function (qs, i) {
             if (i == catname) {
               return _.map(qs, function (q, i) {
-                if (q.Required == 'Y' && q.Caption==caption && (q.ControlType != 'NA' && q.ControlType != 'Calendar' && (q.FieldValues !== undefined && q.FieldValues.length <= 4))) {
+                if (q.Required == 'Y' && q.Caption == caption && (q.ControlType != 'NA' && q.ControlType != 'Calendar' && (q.FieldValues !== undefined && q.FieldValues.length <= 4))) {
                   return q.Value = optvalue.Code;
-                } else if (q.Required == 'Y'  && q.Caption==caption && (q.ControlType != 'NA' && q.ControlType != 'Calendar' && (q.FieldValues !== undefined && q.FieldValues.length > 4))) {
-                  return q.Value = optvalue.target==undefined?optvalue.Code:optvalue.target.value;
+                } else if (q.Required == 'Y' && q.Caption == caption && (q.ControlType != 'NA' && q.ControlType != 'Calendar' && (q.FieldValues !== undefined && q.FieldValues.length > 4))) {
+                  return q.Value = optvalue.target == undefined ? optvalue.Code : optvalue.target.value;
                 }
               })
             }
