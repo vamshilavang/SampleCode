@@ -1,5 +1,7 @@
+require("babel-polyfill");
+
 module.exports = {
-	entry: './src/main.js',
+	entry: ['babel-polyfill','./src/main.js'],
 	output: {
 		path: '/',
 		filename: 'index.js'
