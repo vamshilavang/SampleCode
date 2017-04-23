@@ -29,25 +29,44 @@ export default class eMenu extends Component {
     this.createRequestdataTosend = this.createRequestdataTosend.bind(this);
   }
 
+ //  componentDidMount() {
+ //    //console.log(HttpHelper("https://jsonplaceholder.typicode.com/posts/1",'get'))
+ //    HttpHelper('http://192.168.17.32:6100/api/deal/v1/dealer-products/', 'get').then(function (data) {
+ //      this.state.dealerProduct = data;
+ //      this.state.responseTosend = this.createReqFieldResponse();
+ //      this.createRequestdataTosend();
+ //    }.bind(this));/** Uncomment it and fetch the dealer product */
+ //    //this.state.dealerProduct = require('../../mockAPI/dealerProducts.json');
+ //
+ //    // plz fetch SendRequestToBE
+ //    //this.state.responseTomap = require('../../mockAPI/SendRequestToBE.json');
+ //
+ //    //let mapppedval = _.omit(this.data.responseTomap,'Vehicle');
+ //
+ //
+ //    //this.state.reqFieldResponseUI = require('../../mockAPI/reqFieldResponseUI.json');
+ // /**uncomment it to fetch data from server for reqFieldResponseUI */
+ //
+ //  }
+
   componentDidMount() {
     //console.log(HttpHelper("https://jsonplaceholder.typicode.com/posts/1",'get'))
-    HttpHelper('http://192.168.17.32:6100/api/deal/v1/dealer-products/', 'get').then(function (data) {
-      this.state.dealerProduct = data;
-      this.state.responseTosend = this.createReqFieldResponse();
-      this.createRequestdataTosend();
-    }.bind(this));/** Uncomment it and fetch the dealer product */
-    //this.state.dealerProduct = require('../../mockAPI/dealerProducts.json');
 
+    this.state.dealerProduct = require('../../mockAPI/dealerProducts.json');
+      this.state.responseTosend = this.createReqFieldResponse();
     // plz fetch SendRequestToBE
-    //this.state.responseTomap = require('../../mockAPI/SendRequestToBE.json');
+    this.state.responseTomap = require('../../mockAPI/SendRequestToBE.json');
 
     //let mapppedval = _.omit(this.data.responseTomap,'Vehicle');
+    this.state.responseTomap.Products = this.getMappedRequiredField();
 
-
-    //this.state.reqFieldResponseUI = require('../../mockAPI/reqFieldResponseUI.json');
- /**uncomment it to fetch data from server for reqFieldResponseUI */
+    this.state.reqFieldResponseUI = require('../../mockAPI/reqFieldResponseUI.json');
+    this.state.reqFieldResponseUI.Products = this.getRenderdataFields();
+    this.setState({ "products": this.state.reqFieldResponseUI.Products });
 
   }
+
+
 
   createRequestdataTosend(){
     HttpHelper('http://10.117.18.27:6220/Rating/RatingRESTAPI/json/requiredfields_json', 'post', this.state.responseTosend).then(function (data) {

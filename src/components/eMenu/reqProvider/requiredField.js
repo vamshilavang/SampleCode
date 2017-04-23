@@ -20,8 +20,9 @@ const RequireProvider = (props) => {
     let showCaption = false;
     return (
         <div>
-
+        {questiondata.length > 0?
             <div className="row rootborder">
+
                 {props.IsEdit == false ? (<div className="col-xs-12 emenucol-head">
                     <span className="emenuHead">Required Provider Question</span><strong style={{ float: 'right', cursor: 'pointer', textDecoration: 'underline', color: '#3f3fb5' }}
                         onClick={props.events.editEMenu}>Edit</strong>
@@ -52,7 +53,7 @@ const RequireProvider = (props) => {
                             {/* <div className="btn btn-primary pull-right" onClick={props.events.eMenuOnsave}>Save</div>*/}
                         </div>
                     </section>)}
-            </div>
+            </div>:null}
         </div>
     )
 }
