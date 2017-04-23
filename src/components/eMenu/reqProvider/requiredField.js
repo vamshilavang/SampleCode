@@ -19,17 +19,17 @@ const RequireProvider = (props) => {
     let checkExistinCaption = [];
     let showCaption = false;
     return (
-        <div>
+        <div className="row">
         {questiondata.length > 0?
             <div className="row rootborder">
 
-                {props.IsEdit == false ? (<div className="col-xs-12 emenucol-head">
+                {props.IsEdit == false ? (<div className="col-xs-12 emenucol-head" style={{paddingTop:'0px'}}>
                     <span className="emenuHead">Required Provider Question</span><strong style={{ float: 'right', cursor: 'pointer', textDecoration: 'underline', color: '#3f3fb5' }}
                         onClick={props.events.editEMenu}>Edit</strong>
                 </div>) :
                     (<section className="acc">
                         <p className="emenuHead">Required Provider Question</p>
-                        <div className="col-xs-12" style={{ marginLeft: '5px', paddingBottom: '25px' }}>
+                        <div className="col-xs-12" style={{ marginLeft: '5px', paddingBottom: '25px',paddingTop:'5px' }}>
                             {
                                 _.map(questiondata, function (category, idx) {
                                     if (checkprovideridList.length <= 0 || checkprovideridList.indexOf(category.ProviderId) == -1) {

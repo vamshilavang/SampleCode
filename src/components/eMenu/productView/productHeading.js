@@ -16,22 +16,21 @@
     render() {
       let products = this.state.productsArr;
       return (
-        <div className="container-fluid">
-          <div className="row">
+        <div className="row">
+
           <PlanMenu showRates={true} />
           <div>
             <h3 className="r-bottom" key="productsHeading">Products</h3>
-            <hr className="r-top-no-margin" />
+            <hr className=" r-top-no-margin" />
             {
               products.map((product, i) =>
               <Product Key={"product_" + i.toString()} optType={product} />
             )
               }              
           </div>
-          <div>
+          <div className="row">
           <PlanOption />
           </div>
-        </div>
         </div>
       );
     }

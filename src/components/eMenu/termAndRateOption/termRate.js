@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React from 'react';
 import GridView from './gridView';
 
 const TermRate = (props) => {
@@ -13,7 +13,7 @@ const TermRate = (props) => {
   }
   let options = data.optionTypes;
   return (
-    <div>
+    <div className="row">
       <h4 className="term-rate">Term & Rate Options</h4>
       <div className="App">
         {

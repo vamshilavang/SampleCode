@@ -23,12 +23,12 @@ class Product extends React.Component{
   }
   render(){
     return(
-      <div className="">
+      <div>
       <div className="row product">
-        <div className="col-md-3 col-sm-3 col-xs-12">
+        <div className="col-md-3 col-sm-4 col-xs-12">
           <img src={this.state.imageUrl.toString()} width="100%" />
         </div>
-        <div className="col-xs-4 col-sm-3">
+        <div className="col-xs-6 col-sm-4">
           <p className="r-no-bottom-margin"><b>{this.state.title}</b></p>
           <p className="r-gray">{this.state.price}</p>
           <p className="r-no-bottom-margin r-gray r-medium-text">Provider</p>
@@ -37,7 +37,7 @@ class Product extends React.Component{
           </select>         
           <p className="r-small-bottom-margin r-small-top-margin"><a className="anchor-pointer" onClick={this.updateShowMore.bind(this)}>{this.state.showMore == false ? 'Show More' : 'Show Less'}</a></p>       
         </div>
-        <div className="col-xs-4  col-sm-4 r-checkbox-margin-top product-option">
+        <div className="col-xs-6  col-sm-4">
           <span className="r-checkbox-span"><input type="checkbox" key="platinum" value={this.state.platinum} /></span>
           <span className="r-checkbox-span"><input type="checkbox" key="gold" value={this.state.gold} /></span>
           <span className="r-checkbox-span"><input type="checkbox" key="silver" value={this.state.silver} /></span>

@@ -9,7 +9,7 @@ const Question = (props) => {
     return (
         <div>
             {props.data.FieldValues != undefined && props.data.FieldValues.length > 0 ?
-                <div>
+                <span>
                     <div>{props.data.Caption}</div>
                     <form>
                         <div className="radio" style={{ marginTop: '0px' }}>
@@ -22,7 +22,7 @@ const Question = (props) => {
                             </div>
                         </div>
                     </form>
-                </div> : null}
+                </span> : null}
         </div>
     )
 }

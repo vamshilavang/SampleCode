@@ -1,6 +1,6 @@
 .App h4{
- font-size: 22px;
- margin-bottom: 3px;
+    font-size: 22px;
+    margin-bottom: 3px;
 }
 .term-rate {
     margin-top: 7px;
@@ -14,31 +14,31 @@
     text-align: left;
 }
 .r-panel h4{
-   text-transform: uppercase;
-   font-family: arial, helvetica, sans-serif;
-   font-size: 16px;
+    text-transform: uppercase;
+    font-family: arial, helvetica, sans-serif;
+    font-size: 16px;
 }
 
 .r-panel h4 input{
-   height: 14px;
-   width: 17px;
+    height: 14px;
+    width: 17px;
 }
 .input-group-addon {
-   background-color: #fff !important;   
+    background-color: #fff !important;
 }
 .btn-cus{
-   color: #fff;
-   text-transform: capitalize;
-   margin:16px;
+    color: #fff;
+    text-transform: capitalize;
+    margin:16px;
 }
 
 .cus-input{
-  width: 100%;
+    width: 100%;
 }
 
 .cus-input input{
-  height: 34px;
-  font-size: 15px;
+    height: 34px;
+    font-size: 15px;
 }
 
 /*.cus-input .borderd{
@@ -46,47 +46,47 @@
 }*/
 
 .cus-payment .input-group-addon{
-   background-color:#eee !important; 
+    background-color:#eee !important;
 }
 .cus-payment input{
-  background-color:#eee;
+    background-color:#eee;
 }
 .lessPad{
-  padding: 4px 0;
+    padding: 4px 0;
 }
 .form-control.err{
-  border-color: red !important;
+    border-color: red !important;
 }
-label {  
-  /*color: #b1adad !important;*/
-  margin-bottom: 0px !important;
-  font-family: arial, helvetica, sans-serif !important;
-  font-family: helvetica !important;
-  font-weight: 500 !important;
-  font-size: 15px !important;
+label {
+    /*color: #b1adad !important;*/
+    margin-bottom: 0px !important;
+    font-family: arial, helvetica, sans-serif !important;
+    font-family: helvetica !important;
+    font-weight: 500 !important;
+    font-size: 15px !important;
 }
 
-.borderd-hfit {     
-  border-radius: 4px !important;      
- }
+.borderd-hfit {
+    border-radius: 4px !important;
+}
 .r-price {
-  color: gray;
- font-size: medium;
+    color: gray;
+    font-size: medium;
 }
 .r-no-bottom-margin {
-  margin-bottom: 0px;
+    margin-bottom: 0px;
 }
 
 .r-product-row {
-  margin-top: 20px;
-  margin-bottom: 20px;
+    margin-top: 20px;
+    margin-bottom: 20px;
 }
 .r-checkbox-span {
-  padding-left: 20px;
-  padding-right: 20px;
+    padding-left: 20px;
+    padding-right: 20px;
 }
 .r-small-right-padding {
-  padding-right: 30px;
+    padding-right: 30px;
 }
 
 .body{
@@ -100,44 +100,44 @@ label {
     border-radius: 5px;
 }
 .acc{
-   padding: 10px;
+    padding: 10px;
     width: 100%;
-   }
+}
 .accBody{
-   padding: 10px;
-  font-weight:bold;
- border: 1px solid #cfcfcf;}
+    padding: 10px;
+    font-weight:bold;
+    border: 1px solid #cfcfcf;}
 
 .accHeader{
-  display: block;
+    display: block;
     padding: 10px;
 }
 
 div{
-  padding: 10px 0px 0px 0px;
+    padding: 10px 0px 0px 0px;
 }
 .labelheader{
-  font-weight: bold;
+    font-weight: bold;
     padding: 10px;
 }
 .separator {
-  border-bottom:1px solid grey;
+    border-bottom:1px solid grey;
 }
 
 .greyFont{
-  color:grey;
+    color:grey;
     font-weight: 300;
 }
 
 .active{
     /*display: block;*/
     max-height: 500px;
-    overflow: hidden;   
+    overflow: hidden;
     transition: all 1s ease-in-out;
 }
 .inactive{
     max-height: 0;
-    overflow: hidden;   
+    overflow: hidden;
     transition: all 1s ease-in-out;
 }
 .choices{
@@ -147,75 +147,75 @@ div{
     cursor: pointer;
 }
 .r-gray {
-  color: gray;
-  font-size: medium;
+    color: gray;
+    font-size: medium;
 }
 
 .r-no-bottom-margin {
-  margin-bottom: 0px;
+    margin-bottom: 0px;
 }
 
 .r-product-row {
-  margin-top: 20px;
-  margin-bottom: 20px;
+    margin-top: 20px;
+    margin-bottom: 20px;
 }
 
 .r-checkbox-span {
-  padding-left: 30px;
-  padding-right: 30px;
+    padding-left: 30px;
+    padding-right: 30px;
 }
 
 .r-small-right-padding {
-  padding-right: 30px;
+    padding-right: 30px;
 }
 
 .r-small-right-left-margin {
-  padding-left: 10px;
-  padding-right: 10px;
+    padding-left: 10px;
+    padding-right: 10px;
 }
 
 .r-checkbox-margin-top {
-  margin-top: 40px;
+    margin-top: 40px;
 }
 
 .anchor-pointer {
-  cursor: pointer;
+    cursor: pointer;
 }
 
 .rcorners {
     border-radius: 5px;
     border: 1px solid gray;
-    padding: 20px;  
+    padding: 20px;
     margin: -25px -5px;
 }
 
 .r-small-bottom-margin {
     margin-bottom: 10px;
-    margin-top: -19px;
+    margin-top: -8px;
 }
 
 .r-small-top-margin {
-  margin-top: 20px;
+    margin-top: 20px;
 }
 
 .r-bottom-no-padding {
-  padding-bottom: 0px;
+    padding-bottom: 0px;
 }
 
 .r-bottom-no-margin {
-  margin-bottom: 0px;
+    margin-bottom: 0px;
 }
 
 .r-top-no-margin {
-  margin-top: 0px;
+    margin-top: 0px;
 }
 
 .r-small-text {
-  font-size: 12px;
+    font-size: 12px;
 }
 
 .r-small-text {
-  font-size: 13px;
+    font-size: 13px;
 }
 
 .r-small-left-padding {
@@ -276,31 +276,51 @@ h6 {
     padding: 9px 10px ;
 }
 @media screen and  (min-width: 990px){
-.menu-options{
-  margin-right: 6%;
-}
-.product  .product-option{
-    margin-left: 12%;
-}
-.product .r-checkbox-span{
-  padding-left:27px;
-  padding-right: 27px;
-}
+    .menu-options{
+        margin-right: 12%;
+    }
 
 
- 
-}
-@media screen and  (min-width: 768px) and (max-width: 989px){
-  .menu-options{
-  margin-right: 4%;
-}
- 
-.product .product-option{
+        .product  .product-option{
+            margin-left: 12%;
+        }
+        .product .r-checkbox-span{
+            padding-left:27px;
+            padding-right: 27px;
+        }
 
-  .product .r-checkbox-span{
-    padding-left:27px;
-    padding-right: 27px;
-  }
- 
+
+
+    }
+    @media screen and  (min-width: 768px) and (max-width: 989px){
+        .menu-options{
+            margin-right: 4%;
+        }
+
+        .product .product-option {
+            margin-left: 4%;
+        }
+
+        .product .r-checkbox-span{
+            padding-left:27px;
+            padding-right: 27px;
+        }
+
+    }
+
+@media screen and  (min-width: 990px) and (max-width: 989px){
+    .menu-options{
+        margin-right: 4%;
+    }
+
+    .product .product-option {
+        margin-left: 4%;
+    }
+
+    .product .r-checkbox-span{
+        padding-left:27px;
+        padding-right: 27px;
+    }
+
 }
 
