@@ -3,6 +3,8 @@ import _ from 'underscore';
 
 import HttpHelper from '../../Helper/httpHelper';
 import RequireProvider from './reqProvider/requiredField';
+import TermRate from './termAndRateOption/termRate';
+import ProductHeading from './productView/productHeading';
 
 export default class eMenu extends Component {
   constructor(props) {
@@ -28,27 +30,31 @@ export default class eMenu extends Component {
 
   componentDidMount() {
     //console.log(HttpHelper("https://jsonplaceholder.typicode.com/posts/1",'get'))
-    HttpHelper('https://jsonplaceholder.typicode.com/posts', 'get').then(function (data) {
-      this.state.dealerProduct = data;
-      this.state.responseTosend = this.createReqFieldResponse();
-    }.bind(this));/** Uncomment it and fetch the dealer product */
-    //this.state.dealerProduct = require('../../mockAPI/dealerProducts.json');
-    
-    // plz fetch SendRequestToBE
-    //this.state.responseTomap = require('../../mockAPI/SendRequestToBE.json');
-    HttpHelper('http://10.117.18.27:6220/Rating/RatingRESTAPI/json/requiredfields_json', 'post', this.state.responseTosend).then(function (data) {
-      this.state.responseTomap = data;
-      this.state.responseTomap.Products = this.getMappedRequiredField();
-    }.bind(this));
-    //let mapppedval = _.omit(this.data.responseTomap,'Vehicle');
-    
+    // HttpHelper('https://jsonplaceholder.typicode.com/posts', 'get').then(function (data) {
+    //   this.state.dealerProduct = data;
+    //   this.state.responseTosend = this.createReqFieldResponse();
+    // }.bind(this));/** Uncomment it and fetch the dealer product */
+    this.state.dealerProduct = require('../../mockAPI/dealerProducts.json');
+    this.state.responseTosend = this.createReqFieldResponse();
 
-    //this.state.reqFieldResponseUI = require('../../mockAPI/reqFieldResponseUI.json');
-    HttpHelper('http://10.117.18.27:6220/Rating/RatingRESTAPI/json/requiredfields_json', 'post', this.state.responseTomap).then(function (data) {
-      this.state.reqFieldResponseUI.Products = data;
-      this.state.reqFieldResponseUI.Products = this.getRenderdataFields();
-      this.setState({ "products": this.state.reqFieldResponseUI.Products });
-    }.bind(this)) /**uncomment it to fetch data from server for reqFieldResponseUI */
+    // plz fetch SendRequestToBE
+    this.state.responseTomap = require('../../mockAPI/SendRequestToBE.json');
+    this.state.responseTomap.Products = this.getMappedRequiredField()
+    // HttpHelper('http://10.117.18.27:6220/Rating/RatingRESTAPI/json/requiredfields_json', 'post', this.state.responseTosend).then(function (data) {
+    //   this.state.responseTomap = data;
+    //   this.state.responseTomap.Products = this.getMappedRequiredField();
+    // }.bind(this));
+    //let mapppedval = _.omit(this.data.responseTomap,'Vehicle');
+
+
+    this.state.reqFieldResponseUI = require('../../mockAPI/reqFieldResponseUI.json');
+    this.state.reqFieldResponseUI.Products = this.getRenderdataFields();
+    this.setState({ "products": this.state.reqFieldResponseUI.Products });
+    // HttpHelper('http://10.117.18.27:6220/Rating/RatingRESTAPI/json/requiredfields_json', 'post', this.state.responseTomap).then(function (data) {
+    //   this.state.reqFieldResponseUI.Products = data;
+    //   this.state.reqFieldResponseUI.Products = this.getRenderdataFields();
+    //   this.setState({ "products": this.state.reqFieldResponseUI.Products });
+    // }.bind(this)) /**uncomment it to fetch data from server for reqFieldResponseUI */
 
   }
 
@@ -199,6 +205,9 @@ export default class eMenu extends Component {
         {this.state.reqFieldResponseUI ?
           <RequireProvider header='eMenu' IsEdit={this.state.saveEMenu} data={this.state.reqFieldResponseUI} events={this.events} /> :
           null}
+          <TermRate events={this.events.eMenuOnsave}/>
+          {!this.state.saveEMenu?
+          <ProductHeading/>:null}
       </div>
     );
   }

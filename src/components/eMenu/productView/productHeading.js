@@ -1,7 +1,7 @@
   import React, { Component } from 'react';
-  import Product from './productView/ProductView';
-  import PlanOption from './productView/planList';
-  import PlanMenu from './productView/PlanMenu';
+  import Product from './ProductView';
+  import PlanOption from './planList';
+  import PlanMenu from './PlanMenu';
 
   class ProductHeading extends Component {
     constructor() {
