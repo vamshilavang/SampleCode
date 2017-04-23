@@ -1,0 +1,34 @@
+{
+  "name": "menu_app",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "start": "webpack-dev-server"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "axios": "^0.16.1",
+    "css-loader": "^0.28.0",
+    "react": "^15.5.3",
+    "react-dom": "^15.5.3",
+    "style-loader": "^0.16.1",
+    "underscore": "^1.8.3"
+  },
+  "devDependencies": {
+    "babel-core": "^6.24.1",
+    "babel-loader": "^6.4.1",
+    "babel-polyfill": "^6.23.0",
+    "babel-preset-es2015": "^6.24.1",
+    "babel-preset-react": "^6.24.1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.dev.dealertrack.com/DT2-Payment-NYIlluminati/dt-menu-app.git"
+  },
+  "keywords": [
+    "eMenu"
+  ],
+  "author": "illuminati",
+  "license": "ISC"
+}
