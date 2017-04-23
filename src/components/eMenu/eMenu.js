@@ -3,6 +3,8 @@ import _ from 'underscore';
 
 import HttpHelper from '../../Helper/httpHelper';
 import RequireProvider from './reqProvider/requiredField';
+import TermRate from './termAndRateOption/termRate';
+import ProductHeading from './productView/productHeading';
 
 export default class eMenu extends Component {
   constructor(props) {
@@ -24,66 +26,47 @@ export default class eMenu extends Component {
     this.getMappedRequiredField = this.getMappedRequiredField.bind(this);
     this.getRenderdataFields = this.getRenderdataFields.bind(this);
     this.createReqFieldResponse = this.createReqFieldResponse.bind(this);
+    this.createRequestdataTosend = this.createRequestdataTosend.bind(this);
   }
 
   componentDidMount() {
     //console.log(HttpHelper("https://jsonplaceholder.typicode.com/posts/1",'get'))
-    HttpHelper('https://jsonplaceholder.typicode.com/posts', 'get').then(function (data) {
+    HttpHelper('http://192.168.17.32:6100/api/deal/v1/dealer-products/', 'get').then(function (data) {
       this.state.dealerProduct = data;
       this.state.responseTosend = this.createReqFieldResponse();
+      this.createRequestdataTosend();
     }.bind(this));/** Uncomment it and fetch the dealer product */
     //this.state.dealerProduct = require('../../mockAPI/dealerProducts.json');
-    
+
     // plz fetch SendRequestToBE
     //this.state.responseTomap = require('../../mockAPI/SendRequestToBE.json');
-    HttpHelper('http://10.117.18.27:6220/Rating/RatingRESTAPI/json/requiredfields_json', 'post', this.state.responseTosend).then(function (data) {
-      this.state.responseTomap = data;
-      this.state.responseTomap.Products = this.getMappedRequiredField();
-    }.bind(this));
+
     //let mapppedval = _.omit(this.data.responseTomap,'Vehicle');
-    
+
 
     //this.state.reqFieldResponseUI = require('../../mockAPI/reqFieldResponseUI.json');
-    HttpHelper('http://10.117.18.27:6220/Rating/RatingRESTAPI/json/requiredfields_json', 'post', this.state.responseTomap).then(function (data) {
-      this.state.reqFieldResponseUI.Products = data;
+ /**uncomment it to fetch data from server for reqFieldResponseUI */
+
+  }
+
+  createRequestdataTosend(){
+    HttpHelper('http://10.117.18.27:6220/Rating/RatingRESTAPI/json/requiredfields_json', 'post', this.state.responseTosend).then(function (data) {
+      this.state.responseTomap = data;
+      this.state.reqFieldResponseUI = data;
+      this.state.reqFieldResponseUI.Products  = this.getMappedRequiredField();
       this.state.reqFieldResponseUI.Products = this.getRenderdataFields();
       this.setState({ "products": this.state.reqFieldResponseUI.Products });
-    }.bind(this)) /**uncomment it to fetch data from server for reqFieldResponseUI */
-
+      //this.createRequiredJson();
+    }.bind(this));
   }
 
   createReqFieldResponse() {
     let dataTosend = {};
-    dataTosend['KeyData'] = {
-      "ClientId": "DEM",
-      "ClientDealerId": "1112016",
-      "DTDealerId": "1112016",
-      "RequestDate": "\/Date(1472097614353)\/"
-    };
-    dataTosend['Vehicle'] = {
-      "BookType": "1",
-      "Year": "0",
-      "PurchasePrice": "0",
-      "Odometer": "0",
-      "PurchaseDate": "\/Date(1472097614353)\/",
-      "Type": "1",
-      "InServiceDate": "\/Date(1472097614353)\/",
-      "VehicleAttributes": []
-    };
+    dataTosend["KeyData"] = {"ClientId": "DEM", "ClientDealerId": this.state.dealerProduct.results[0].dealer_id,
+    "DTDealerId": this.state.dealerProduct.results[0].dealer_id, "RequestDate": "\/Date(1472097614353)\/"};
 
-    dataTosend['Finance'] = {
-      "DealType": "1",
-      "MSRP": "0",
-      "FinancedAmount": "0",
-      "FinanceTerm": "0",
-      "FinanceTerm2": "0",
-      "FinanceApr": "0",
-      "MonthlyPayment": "0",
-      "FirstPaymentDate": "\/Date(1472097614353)\/",
-      "DaysToFirstPayment": "0",
-      "LeaseAnnualMileage": "0"
-    }
-
+    dataTosend["Vehicle"] =  { "BookType": "1",  "Type": "1" };
+    dataTosend["Finance"] = { "DealType": "1"};
 
     debugger;
     let productArray = [];
@@ -93,9 +76,7 @@ export default class eMenu extends Component {
       productObject = {
         "ProductTypeCode": item.category_code,
         "ProviderId": item.provider_code,
-        "ProviderDealerId": item.dealer_id,
-        "ClientProductId": "647644",
-        "ProviderProductId": ""
+        "ProviderDealerId": ""
       }
       productArray.push(productObject);
     })
@@ -110,7 +91,7 @@ export default class eMenu extends Component {
     _.each(this.state.dealerProduct.results, function (item, i) {
       if (item['is_rateable']) {
         _.each(responseTomap, function (childitem, idx) {
-          if ((item['category_code'] == childitem['ProductTypeCode'])
+          if (('VSC' == childitem['ProductTypeCode'])
             && (item['provider_code'] == childitem['ProviderId'])) {
             mappedData.push(childitem);
           }
@@ -199,6 +180,9 @@ export default class eMenu extends Component {
         {this.state.reqFieldResponseUI ?
           <RequireProvider header='eMenu' IsEdit={this.state.saveEMenu} data={this.state.reqFieldResponseUI} events={this.events} /> :
           null}
+          <TermRate events={this.events.eMenuOnsave}/>
+          {!this.state.saveEMenu?
+          <ProductHeading/>:null}
       </div>
     );
   }

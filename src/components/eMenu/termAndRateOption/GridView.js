@@ -48,6 +48,10 @@ class GridView extends React.Component {
        return `${apiUrl}`;
 
        case 'RETL':
+        apiUrl = 'http://sfidsvl001.devtest1.qts.fni:6125/api/deal/v1/deal-jackets/310200000002513901/deals/310200000002513902/deal-finance-summary/';
+       return `${apiUrl}`;
+
+       case 'CASH':
         apiUrl = 'http://sfidsvl001.devtest1.qts.fni:6125/api/deal/v1/deal-jackets/310200000002509111/deals/310200000002509112/deal-finance-summary/';
        return `${apiUrl}`;
 
@@ -101,12 +105,12 @@ class GridView extends React.Component {
           isRateError: true,
           rateMsg: 'Please Enter Numeric Values'
         });
-      }else if(parseFloat(cVal) > 99.99){
+      }else if(parseFloat(cVal) > 99.9999){
         console.log('More than 99')
         this.setState({
           rate: cVal,
           isRateError: true,
-          rateMsg: 'Value Should not Exceed 99.99'
+          rateMsg: 'Value Should not Exceed 99.9999'
         });
       }else{
            this.setState({
@@ -165,7 +169,9 @@ class GridView extends React.Component {
               defaultValue = {dtls.optionDtls.position === 1 ? dtls.financialInfo.term : (dtls.financialInfo.term + (12 * (parseInt(dtls.optionDtls.position) - 1))) }
               disabled = { dtls.optionDtls.position === 1 ? 'disabled' : false } onChange={this.changeTerm}/>
               :
-            <input type="text" className="form-control borderd hfit" defaultValue = "cash"/>}
+            <input type="text" className="form-control borderd-hfit" defaultValue = {dtls.optionDtls.position === 1 ? 'Cash': (12 * (parseInt(dtls.optionDtls.position) - 1)) }
+             disabled = { dtls.optionDtls.position === 1 ? 'disabled' : false } onChange={this.changeTerm}/>
+           }
           </div>
 
           </div>
@@ -173,7 +179,7 @@ class GridView extends React.Component {
           <span>
           <label>Money Factor</label>
           <div className="input-group default-margin-tp-btm cus-input lessPad">
-            <input type="text" className="form-control borderd hfit"
+            <input type="text" className="form-control borderd-hfit"
              defaultValue = {dtls.optionDtls.position === 1 ? (financialInfo.money_factor/2400) : '' }
              disabled = { dtls.optionDtls.position === 1 ? 'disabled' : false }/>
           </div>
@@ -188,9 +194,12 @@ class GridView extends React.Component {
 
           ) :
             <span>
-             <label>{financialInfo.finance_method !== 'BALL' ? 'Rate' : 'APR'}</label>
+             <label>{financialInfo.finance_method === 'CASH' ? 'Rate' : 'APR'}</label>
               <div className="input-group default-margin-tp-btm cus-input lessPad">
-              {financialInfo.finance_method !== 'CASH' ?
+              {financialInfo.finance_method === 'CASH' ?
+              <input type="text" className="form-control borderd-hfit" defaultValue = { dtls.optionDtls.position === 1 ? 'Cash' : 0 }
+               disabled = { dtls.optionDtls.position === 1 ? 'disabled' : false } onChange={this.changeRate}/>
+               :
               <span>
                 <div className="input-group default-margin-tp-btm cus-input lessPad">
                   <input type="text" className={"form-control borderd hfit "+(dtls.isRateError && 'err')}
@@ -198,11 +207,13 @@ class GridView extends React.Component {
                   disabled = { dtls.optionDtls.position === 1 ? 'disabled' : false } onChange={this.changeRate}/>
                   <span className="input-group-addon" id="sizing-addon2">%</span>
                 </div>
-                </span>:
-               <input type="text" className="form-control borderd hfit" defaultValue = "cash"/>}
+                </span>
+
+               }
             </div>
           </span>
         }
+
         {financialInfo.finance_method === 'BALL' ?
           <span>
            <label>Balloon Payment</label>

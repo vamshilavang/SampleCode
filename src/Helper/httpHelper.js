@@ -5,8 +5,8 @@ import axios from 'axios';
 
 const HttpHelper = (url, method, reqData) => {
 
-    
-    
+
+
         if (method.toLowerCase() == 'post') {
             if (reqData == undefined) {
                 reqData = {};
@@ -18,7 +18,7 @@ const HttpHelper = (url, method, reqData) => {
                 .then(function (response) {
                     console.log(response);
                     if (response.status == 200) {
-                        response.data
+                        return response.data
                     } else {
                         alert("Error while Fetching data");
                     }
@@ -44,7 +44,7 @@ const HttpHelper = (url, method, reqData) => {
                     console.log(error);
                 });
         }
-    
+
 }
 
 export default HttpHelper;

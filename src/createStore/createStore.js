@@ -1,5 +1,5 @@
 var redux = require('redux');
-var {setInitialValuesReducer} = require('./../reducers/reducers');
+var {setInitialValuesReducer} = require('../reducers/reducers');
 export var config = (initialState = {}) => {
 	var reducer = redux.combineReducers({
 		values: setInitialValuesReducer

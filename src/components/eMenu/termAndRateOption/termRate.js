@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import GridView from './termAndRateOption/gridView';
+import GridView from './GridView';
 
 class TermRate extends Component {
   constructor() {
